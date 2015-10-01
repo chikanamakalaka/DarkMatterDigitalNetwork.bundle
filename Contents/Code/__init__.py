@@ -1,5 +1,5 @@
 ART = 'art-default.jpg'
-ICON = 'icon-default.jpg'
+ICON = 'icon-default.png'
 NAME = 'Dark Matter Digital Network'
 STREAM_URL = 'http://live.darkmatterdigitalnetwork.com/darkmatter.mp3'
 
