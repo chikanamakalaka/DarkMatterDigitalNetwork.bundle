@@ -5,7 +5,7 @@ PLAYLIST_URL_AAC = 'http://www.radioparadise.com/musiclinks/rp_128aac.m3u'
 PLAYLIST_URL_MP3 = 'http://www.radioparadise.com/musiclinks/rp_128.m3u'
 METADATA_URL = 'http://radioparadise.com/ajax_xml_song_info.php?song_id=now'
 
-PREFIX = '/music/InternetRadio'
+PREFIX = '/music/RadioParadise'
 
 ####################################################################################################
 
@@ -17,7 +17,7 @@ def Start():
     Plugin.AddViewGroup('InfoList', viewMode = 'InfoList', mediaType = 'items')
 
     # Setup the artwork associated with the plugin
-    ObjectContainer.title1 = 'Internet Radio'
+    ObjectContainer.title1 = 'Radio Paradise'
     ObjectContainer.art = R(ART)
     ObjectContainer.view_group = 'List'
 
@@ -28,7 +28,7 @@ def Start():
 
 ####################################################################################################
 
-@handler(PREFIX, 'Internet Radio')
+@handler(PREFIX, 'Radio Paradise')
 def MainMenu():
     oc = ObjectContainer(no_cache = True)
 
