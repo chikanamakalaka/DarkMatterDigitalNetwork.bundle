@@ -1,11 +1,11 @@
 ART      = 'art-default.jpg'
 ICON     = 'icon-default.png'
 
-PLAYLIST_URL_AAC = 'http://www.radioparadise.com/musiclinks/rp_128aac.m3u'
-PLAYLIST_URL_MP3 = 'http://www.radioparadise.com/musiclinks/rp_128.m3u'
+PLAYLIST_URL_AAC = 'http://live.darkmatterdigitalnetwork.com/darkmatter.aac.m3u'
+PLAYLIST_URL_MP3 = 'http://live.darkmatterdigitalnetwork.com/darkmatter.mp3.m3u'
 METADATA_URL = 'http://radioparadise.com/ajax_xml_song_info.php?song_id=now'
 
-PREFIX = '/music/RadioParadise'
+PREFIX = '/music/DarkMatterDigitalNetwork'
 
 ####################################################################################################
 
@@ -17,7 +17,7 @@ def Start():
     Plugin.AddViewGroup('InfoList', viewMode = 'InfoList', mediaType = 'items')
 
     # Setup the artwork associated with the plugin
-    ObjectContainer.title1 = 'Radio Paradise'
+    ObjectContainer.title1 = 'Dark Matter Digital Network'
     ObjectContainer.art = R(ART)
     ObjectContainer.view_group = 'List'
 
@@ -28,7 +28,7 @@ def Start():
 
 ####################################################################################################
 
-@handler(PREFIX, 'Radio Paradise')
+@handler(PREFIX, 'Dark Matter Digital Network')
 def MainMenu():
     oc = ObjectContainer(no_cache = True)
 
@@ -36,7 +36,7 @@ def MainMenu():
     # oc.art = HTTP.Request('http://radioparadise.com/readtxt.php').content
 
     # Fetch XML with metadata and build XML Object
-    song_info = XML.ObjectFromURL(METADATA_URL)
+    #song_info = XML.ObjectFromURL(METADATA_URL)
 
     # Fetch AAC and MP3 urls
     aac_url = HTTP.Request(PLAYLIST_URL_AAC).content.splitlines()[0]
@@ -89,7 +89,7 @@ def CreateTrackObject(title, artist, album, rating, thumb, art, aac_url, mp3_url
             container = Container.MP3,
             audio_codec = AudioCodec.MP3,
             audio_channels = 2,
-            bitrate = 128,
+            bitrate = 48,
             parts = [
                 PartObject(
                     key = Callback(PlayMP3, url = mp3_url)
@@ -103,7 +103,7 @@ def CreateTrackObject(title, artist, album, rating, thumb, art, aac_url, mp3_url
             container = Container.MP4,
             audio_codec = AudioCodec.AAC,
             audio_channels = 2,
-            bitrate = 128,
+            bitrate = 48,
             parts = [
                 PartObject(
                     key = Callback(PlayAAC, url = aac_url)
